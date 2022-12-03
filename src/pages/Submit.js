@@ -109,7 +109,7 @@ export default function Submit() {
                     }
                 }
             )
-            if (p.statusText === 'OK') {
+            if (p.ok) {
                 setLoader(false)
                 navigate('/results')
             } else {
