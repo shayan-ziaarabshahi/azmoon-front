@@ -109,7 +109,8 @@ export default function Submit() {
                     }
                 }
             )
-            if (JSON.parse(p).iQ) {
+            console.log(p)
+            if (p.ok) {
                 setLoader(false)
                 navigate('/results')
             } else {
