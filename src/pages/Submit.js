@@ -109,7 +109,7 @@ export default function Submit() {
                     }
                 }
             )
-            if (p.ok) {
+            if (JSON.parse(p).iQ) {
                 setLoader(false)
                 navigate('/results')
             } else {
