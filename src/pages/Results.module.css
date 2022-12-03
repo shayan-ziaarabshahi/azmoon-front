@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.innerContainer {
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.description {
+  display: block;
+  margin-bottom: 2rem;
+  color: rgb(22, 95, 163);
+}
+
+.IQContainer {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border: 5px groove gold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SHContainer {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border: 5px groove gold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.PFContainer {
+  padding: 2rem;
+  border: 5px groove gold;
+}
+.PFTitle {
+    display: block;
+    margin-bottom: 1rem;
+}
+.PFContainer div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}

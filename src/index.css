@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: vazir;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@font-face {
+  font-family: vazir;
+  src: url("./fonts/Vazir-Medium.woff2");
+}
+
+.Toastify__toast-body {
+  font-family: vazir;
+  text-align: justify;
+}
