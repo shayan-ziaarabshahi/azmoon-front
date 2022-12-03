@@ -110,7 +110,7 @@ export default function Submit() {
                 }
             )
             console.log(p)
-            if (p.ok) {
+            if (p.status >= 200 && p.status < 300) {
                 setLoader(false)
                 navigate('/results')
             } else {
