@@ -11,13 +11,13 @@ import { setIQTestPassedAction } from './../redux/slices/websiteSlice'
 
 export default function IQ() {
 
-  const [minutes, _setMinutes] = useState(0)
+  const [minutes, _setMinutes] = useState(45)
   const minutesRef = useRef(minutes)
   function setMinutes(x) {
     minutesRef.current = x;
     _setMinutes(x);
   }
-  const [seconds, _setSeconds] = useState(5)
+  const [seconds, _setSeconds] = useState(59)
   const secondsRef = useRef(seconds)
   function setSeconds(y) {
     secondsRef.current = y;
