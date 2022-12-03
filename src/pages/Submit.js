@@ -97,7 +97,7 @@ export default function Submit() {
             setLoader(true)
             const p = await axios(
                 {
-                    url: '/api/assessment',
+                    url: 'https://azmoon-api.onrender.com/api/assessment',
                     method: 'POST',
                     data: {
                         IQ: selector.IQ,
