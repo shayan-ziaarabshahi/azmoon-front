@@ -17,7 +17,7 @@ export default function IQ() {
     minutesRef.current = x;
     _setMinutes(x);
   }
-  const [seconds, _setSeconds] = useState(0)
+  const [seconds, _setSeconds] = useState(2)
   const secondsRef = useRef(seconds)
   function setSeconds(y) {
     secondsRef.current = y;
