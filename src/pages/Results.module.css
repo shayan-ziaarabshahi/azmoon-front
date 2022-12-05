@@ -3,48 +3,93 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-image: linear-gradient(90deg,#8360c3, #2ebf91);
 }
 
 .innerContainer {
   padding: 2rem;
   border-radius: 10px;
+  width: 800px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: white;
+  margin: 1rem;
 }
 
 .description {
   display: block;
   margin-bottom: 2rem;
-  color: rgb(22, 95, 163);
+  color: black;
 }
 
 .IQContainer {
   margin-bottom: 2rem;
   padding: 2rem;
-  border: 5px groove gold;
+  border: 5px solid skyblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 10px;
 }
 
 .SHContainer {
   margin-bottom: 2rem;
   padding: 2rem;
-  border: 5px groove gold;
+  border: 5px solid skyblue;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 10px;
 }
 
 .PFContainer {
   padding: 2rem;
-  border: 5px groove gold;
+  border: 5px solid skyblue;
+  margin-bottom: 3rem;
+  border-radius: 10px;
 }
 .PFTitle {
-    display: block;
-    margin-bottom: 1rem;
+  display: block;
+  margin-bottom: 1rem;
 }
 .PFContainer div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
+}
+
+.descriptionContainer {
+  border-top: 2px dashed black;
+  padding-top: 2rem;
+}
+
+.descriptionTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.descriptionSectionContainer {
+  padding: 2rem;
+  border: 1px solid red;
+  border: 5px solid rgba(21, 255, 0, 0.705);
+  margin-bottom: 2rem;
+  border-radius: 10px;
+}
+
+.descriptionSectionTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.paragraph {
+  text-align: justify;
+  line-height: 2rem;
+  color: rgb(63, 71, 71);
+}
+
+.chartImage {
+  width: 100%;
+  height: max-content;
 }

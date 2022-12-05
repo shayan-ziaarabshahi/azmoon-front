@@ -3,7 +3,7 @@ import styles from './IQ.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { setScoreAction } from './../redux/slices/websiteSlice'
 import { IQTestArray } from '../data/IQ'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setIQTestPassedAction } from './../redux/slices/websiteSlice'
@@ -11,13 +11,13 @@ import { setIQTestPassedAction } from './../redux/slices/websiteSlice'
 
 export default function IQ() {
 
-  const [minutes, _setMinutes] = useState(45)
+  const [minutes, _setMinutes] = useState(1)
   const minutesRef = useRef(minutes)
   function setMinutes(x) {
     minutesRef.current = x;
     _setMinutes(x);
   }
-  const [seconds, _setSeconds] = useState(59)
+  const [seconds, _setSeconds] = useState(0)
   const secondsRef = useRef(seconds)
   function setSeconds(y) {
     secondsRef.current = y;

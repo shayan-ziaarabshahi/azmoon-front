@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Submit.module.css'
-import { setSchoolNameAction, setGradeAction, setBirthDayAction, setBirthMonthAction, setBirthYearAction } from './../redux/slices/websiteSlice'
+import { setSchoolNameAction, setGradeAction, setAgeAction, setSuccessAction, setEmailAction } from './../redux/slices/websiteSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { setTotalsAction } from './../redux/slices/websiteSlice'
 import { ToastContainer, toast, Flip } from 'react-toastify';
@@ -93,7 +93,7 @@ export default function Submit() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (selector.schoolName && selector.grade && selector.birthday.day && selector.birthday.month && selector.birthday.year) {
+        if (selector.schoolName && selector.grade && selector.age && selector.email) {
             setLoader(true)
             const p = await axios(
                 {
@@ -105,13 +105,15 @@ export default function Submit() {
                         PF: selector.PF,
                         schoolName: selector.schoolName,
                         grade: selector.grade,
-                        birthday: selector.birthday
+                        age: selector.age,
+                        email: selector.email
                     }
                 }
             )
             console.log(p)
             if (p.status >= 200 && p.status < 300) {
                 setLoader(false)
+                dispatch(setSuccessAction({ success: true }))
                 navigate('/results')
             } else {
                 setLoader(false)
@@ -129,6 +131,9 @@ export default function Submit() {
     if (selector.IQTestPassed === false) {
         return <Navigate to='/E1' />
     }
+    if (selector.success === true) {
+        return <Navigate to='/results' />
+    } 
 
     return (
         <div className={styles.container}>
@@ -143,65 +148,60 @@ export default function Submit() {
                     لطفا موارد زیر را تکمیل کرده و در نهایت روی دکمه ارسال کلیک کنید.
                 </span>
                 <form onSubmit={handleSubmit}>
-
-                    <div className={styles.fieldContainer}>
-                        <label htmlFor='schoolName'>نام مدرسه</label>
-                        <input
-                            name='schoolName'
-                            type='text'
-                            onChange={(e) => dispatch(setSchoolNameAction({ schoolName: e.target.value }))}
-                            value={selector.schoolName}
-                        />
-                    </div>
-
-                    <div className={styles.fieldContainer}>
-                        <label htmlFor='grade'>مقطع تحصیلی</label>
-                        <input
-                            name='grade'
-                            type='text'
-                            onChange={(e) => dispatch(setGradeAction({ grade: e.target.value }))}
-                            value={selector.grade}
-                        />
-                    </div>
-
-                    <div className={styles.timeContainer}>
-                        <span>تاریخ تولد</span>
-                        <div className={styles.timeItemsContainer}>
-                            <div className={styles.timeItemContainer}>
-                                <label>روز</label>
-                                <input
-                                    type='text'
-                                    placeholder='01'
-                                    onChange={(e) => dispatch(setBirthDayAction({ birthDay: e.target.value }))}
-                                    value={selector.birthday.day}
-                                />
-                            </div>
-                            <div className={styles.timeItemContainer}>
-                                <label>ماه</label>
-                                <input
-                                    type='text'
-                                    placeholder='01'
-                                    onChange={(e) => dispatch(setBirthMonthAction({ birthMonth: e.target.value }))}
-                                    value={selector.birthday.month}
-                                />
-                            </div>
-                            <div className={styles.timeItemContainer}>
-                                <label>سال</label>
-                                <input
-                                    type='text'
-                                    placeholder='1401'
-                                    onChange={(e) => dispatch(setBirthYearAction({ birthYear: e.target.value }))}
-                                    value={selector.birthday.year}
-                                />
-                            </div>
+                    <div className={styles.grid}>
+                        <div className={styles.fieldContainer}>
+                            <label htmlFor='schoolName'>نام مدرسه</label>
+                            <input
+                                name='schoolName'
+                                type='text'
+                                onChange={(e) => dispatch(setSchoolNameAction({ schoolName: e.target.value }))}
+                                value={selector.schoolName}
+                            />
                         </div>
+
+                        <div className={styles.fieldContainer}>
+                            <label htmlFor='grade'>مقطع تحصیلی</label>
+                            <input
+                                name='grade'
+                                type='text'
+                                onChange={(e) => dispatch(setGradeAction({ grade: e.target.value }))}
+                                value={selector.grade}
+                            />
+                        </div>
+
+                        <div className={styles.fieldContainer}>
+                            <label htmlFor='age'>
+                                سن (لطفا تنها عدد صحیح وارد کنید)
+                            </label>
+                            <input
+                                type='text'
+                                name='age'
+                                placeholder='18'
+                                onChange={(e) => dispatch(setAgeAction({ age: e.target.value }))}
+                                value={selector.age}
+                            />
+                        </div>
+
+                        <div className={styles.fieldContainer}>
+                            <label htmlFor='email'>
+                                ایمیل
+                            </label>
+                            <input
+                                type='text'
+                                name='email'
+                                placeholder=''
+                                onChange={(e) => dispatch(setEmailAction({ email: e.target.value }))}
+                                value={selector.email}
+                            />
+                        </div>
+
                     </div>
                     <div className={styles.buttonContainer}>
                         {!loader && <input type='submit' value='ارسال' />}
                         {loader && <div className={styles.loader}></div>}
                     </div>
                 </form>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }

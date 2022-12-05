@@ -11,15 +11,7 @@ const setSchoolName = (state, action) => {
 const setGrade = (state, action) => {
     state.grade = action.payload.grade
 }
-const setBirthDay = (state, action) => {
-    state.birthday.day = action.payload.birthDay
-}
-const setBirthMonth = (state, action) => {
-    state.birthday.month = action.payload.birthMonth
-}
-const setBirthYear = (state, action) => {
-    state.birthday.year = action.payload.birthYear
-}
+
 
 const setTotals = (state, action) => {
     state.IQ.t = action.payload.iq
@@ -30,7 +22,7 @@ const setTotals = (state, action) => {
 
     state.PF.of = action.payload.of
     state.PF.cf = action.payload.cf
-    state.PF.ef = action.payload.ef 
+    state.PF.ef = action.payload.ef
     state.PF.af = action.payload.af
     state.PF.nf = action.payload.nf
 }
@@ -39,8 +31,20 @@ const setIQTestPassed = (state, action) => {
     state.IQTestPassed = action.payload.passed
 }
 
+const setAge = (state, action) => {
+    state.age = action.payload.age
+}
 
-const initialState = { 
+const setEmail = (state, action) => {
+    state.email = action.payload.email
+}
+
+const setSuccess = (state, action) => {
+    state.success = action.payload.success
+}
+
+
+const initialState = {
     IQ: {
         t: '',
         options: {
@@ -52,7 +56,7 @@ const initialState = {
             i51: { o: '', p: '' }, i52: { o: '', p: '' }, i53: { o: '', p: '' }, i54: { o: '', p: '' }, i55: { o: '', p: '' }, i56: { o: '', p: '' }, i57: { o: '', p: '' }, i58: { o: '', p: '' }, i59: { o: '', p: '' }, i60: { o: '', p: '' },
         }
     },
-    IQTestPassed:false,
+    IQTestPassed: false,
     SH: {
         t: '',
         rh: '',
@@ -79,11 +83,10 @@ const initialState = {
     },
     schoolName: '',
     grade: '',
-    birthday: {
-        day: '',
-        month: '',
-        year: ''
-    }
+    age: '',
+    email: '',
+
+    success: false
 }
 
 const websiteSlice = createSlice({
@@ -96,11 +99,12 @@ const websiteSlice = createSlice({
 
         setSchoolName,
         setGrade,
-        setBirthDay,
-        setBirthMonth,
-        setBirthYear,
+        setAge,
+        setEmail,
 
-        setTotals
+        setTotals,
+
+        setSuccess
     }
 })
 
@@ -111,11 +115,13 @@ export const {
 
     setSchoolName: setSchoolNameAction,
     setGrade: setGradeAction,
-    setBirthDay: setBirthDayAction,
-    setBirthMonth: setBirthMonthAction,
-    setBirthYear: setBirthYearAction,
+    setAge: setAgeAction,
+    setEmail: setEmailAction,
 
-    setTotals: setTotalsAction
+    setTotals: setTotalsAction,
+
+    setSuccess: setSuccessAction
+
 } = websiteSlice.actions
 
 export default websiteSlice.reducer
