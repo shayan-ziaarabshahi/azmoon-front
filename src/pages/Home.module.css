@@ -4,6 +4,12 @@
   min-height: calc(100vh - 20px);
 }
 
+.emailLink {
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+}
+
 .HeaderImage { 
   height: 100px;
   margin-top: 1rem;
