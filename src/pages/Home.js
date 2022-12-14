@@ -8,6 +8,7 @@ export default function Home() {
 
     return (
         <div className={styles.container}>
+            <a href="mailto: ziaarabshahi_shayan@yahoo.com" className={styles.emailLink}>تماس با پشتیبانی</a>
             <img src={headerImage} alt='' className={styles.HeaderImage} />
             <div className={styles.descriptionContainer}>
                 <span className={styles.descriptionTitle}>
