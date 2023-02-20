@@ -1,17 +1,16 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import styles from './IQ.module.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { IQTestArray } from '../data/IQ'
-import { ToastContainer, toast, Flip } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { convertEnToPe } from 'persian-number'
-import axiosInstance from '../_axios'
-import { setUserAction } from '../redux/slices/websiteSlice';
-
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import styles from "./IQ.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { IQTestArray } from "../data/IQ";
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { convertEnToPe } from "persian-number";
+import axiosInstance from "../_axios";
+import { setUserAction } from "../redux/slices/websiteSlice";
 
 export default function IQ() {
-
-  const [timeFinished, setTimeFinished] = useState(false)
+  const [loader, setLoader] = useState(false);
+  const [timeFinished, setTimeFinished] = useState(false);
 
   const [IQItems, setIQItems] = useState();
   const [minutes, _setMinutes] = useState(45);
@@ -52,11 +51,12 @@ export default function IQ() {
   }
 
   const submitForm = useCallback(async () => {
+    setLoader(true);
     let total = 0;
     let i;
     for (i in IQItems) {
       if (IQItems[i].point) {
-        total += Number(IQItems[i].point);  
+        total += Number(IQItems[i].point);
       }
     }
     try {
@@ -65,7 +65,7 @@ export default function IQ() {
         url: "/api/assessment/iq-test",
         data: {
           _id: selector.user._id,
-          IQ: { 
+          IQ: {
             total,
             options: IQItems,
           },
@@ -78,13 +78,14 @@ export default function IQ() {
       console(err);
       toast.error(toast.error(err.response?.data?.message || err.message));
     }
-  },[IQItems, dispatch, selector.user._id]);
+    setLoader(false);
+  }, [IQItems, dispatch, selector.user._id]);
 
   useEffect(() => {
     if (timeFinished) {
-      submitForm()
+      submitForm();
     }
-  },[timeFinished, submitForm])
+  }, [timeFinished, submitForm]);
 
   const countDownMinutes = () => {
     if (minutesRef.current === 0) {
@@ -105,7 +106,7 @@ export default function IQ() {
     }
     if (minutesRef.current === 0 && secondsRef.current === 1) {
       clearInterval(intervalRef_S.current);
-      setTimeFinished(true)
+      setTimeFinished(true);
     } else {
       setSeconds(secondsRef.current === 0 ? 59 : secondsRef.current - 1);
     }
@@ -136,8 +137,11 @@ export default function IQ() {
         </div>
       </div>
       <div className={styles.timerContainer}>
-        {convertEnToPe(String(secondsRef.current).padStart(2, 0))} :{" "}
-        {convertEnToPe(String(minutesRef.current).padStart(2, 0))}
+        {!loader &&
+          convertEnToPe(String(secondsRef.current).padStart(2, 0)) +
+            " : " +
+            convertEnToPe(String(minutesRef.current).padStart(2, 0))}
+        {loader && <div className={styles.loader}></div>}
       </div>
       <div className={styles.itemsContainer}>
         {IQTestArray.map((item) => (

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "./PF.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { PFTestArray } from "../data/PF";
-import { Link, Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "../_axios";
 import { setUserAction } from "../redux/slices/websiteSlice";
 
 export default function PF() {
+  const [loader, setLoader] = useState(false)
   const [PFItems, setPFItems] = useState();
 
   useEffect(() => {
@@ -29,9 +29,9 @@ export default function PF() {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state.websiteSlice);
 
-  const navigate = useNavigate();
 
   const handleTransfer = async () => {
+    setLoader(true)
     if (Object.values(PFItems).some((i) => i.p === "")) {
       toast.error(
         "به نظر می رسد به برخی از پرسش های بالا پاسخ نداده اید. لطفا ابتدا پرسش نامه جاری را تکمیل کنید.",
@@ -39,6 +39,7 @@ export default function PF() {
           transition: Flip,
         }
       );
+      setLoader(false)
       return;
     }
 
@@ -95,6 +96,7 @@ export default function PF() {
       console(err);
       toast.error(toast.error(err.response?.data?.message || err.message));
     }
+    setLoader(false)
   };
 
   return (
@@ -145,9 +147,12 @@ export default function PF() {
         ))}
       </div>
       <div className={styles.linksContainer}>
-        <div onClick={handleTransfer} className={styles.nextLink}>
-          انتقال به بخش پایانی
-        </div>
+        {!loader && (
+          <div onClick={handleTransfer} className={styles.nextLink}>
+            انتقال به بخش پایانی
+          </div>
+        )}
+        {loader && <div className={styles.loader}></div>}
       </div>
     </div>
   );

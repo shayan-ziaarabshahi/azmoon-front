@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "../_axios";
 
 export default function SH() {
-  const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
   const [SHItems, setSHItems] = useState();
 
   useEffect(() => {
@@ -33,19 +33,18 @@ export default function SH() {
   const navigate = useNavigate();
 
   const handleTransfer = async () => {
-
-    setLoader(true)
+    setLoader(true);
     if (Object.values(SHItems).some((i) => i.point === "")) {
-      console.log('hey')
+      console.log("hey");
       toast.error(
         "به نظر می رسد به برخی از پرسش های بالا پاسخ نداده اید. لطفا ابتدا پرسش نامه جاری را تکمیل کنید.",
         {
           transition: Flip,
-        } 
+        }
       );
 
-      setLoader(false)
-      return
+      setLoader(false);
+      return;
     }
 
     try {
@@ -53,7 +52,7 @@ export default function SH() {
       let religiousHealth = 0;
       let existentialHealth = 0;
       let i;
-      for (i in SHItems) { 
+      for (i in SHItems) {
         if (SHItems[i].point) {
           total += Number(SHItems[i].point);
           if (i.substr(1) % 2 === 0) {
@@ -86,9 +85,8 @@ export default function SH() {
       toast.error(toast.error(err.response?.data?.message || err.message));
     }
 
-    setLoader(false)
+    setLoader(false);
   };
-
 
   return (
     <div className={styles.container}>
@@ -142,9 +140,12 @@ export default function SH() {
         ))}
       </div>
       <div className={styles.linksContainer}>
-        <div onClick={handleTransfer} className={styles.nextLink}>
-          انتقال به پرسشنامه ۲
-        </div>
+        {!loader && (
+          <div onClick={handleTransfer} className={styles.nextLink}>
+            انتقال به پرسشنامه ۲
+          </div>
+        )}
+        {loader && <div className={styles.loader}></div>}
       </div>
     </div>
   );
