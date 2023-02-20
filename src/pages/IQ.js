@@ -14,8 +14,8 @@ export default function IQ() {
   const [timeFinished, setTimeFinished] = useState(false)
 
   const [IQItems, setIQItems] = useState();
-  const [minutes, _setMinutes] = useState(0);
-  const [seconds, _setSeconds] = useState(7);
+  const [minutes, _setMinutes] = useState(45);
+  const [seconds, _setSeconds] = useState(59);
 
   const selector = useSelector((state) => state.websiteSlice);
 
