@@ -34,7 +34,7 @@
   display: block;
   margin-bottom: 2rem;
   font-weight: bold;
-  color: black;
+  color: rgb(22, 95, 163);
 }
 .descriptionContainer span:nth-child(2) {
   margin-bottom: 0.5rem;
@@ -71,9 +71,12 @@
   font-weight: bold;
   border: 5px solid black;
 }
-.examContainer:hover {
-  background-color: rgb(93, 93, 179);
-  color: white;
+
+.IQcontainer {
+  border: 5px solid lightblue;
+}
+.IQcontainer:hover {
+  background-color: lightblue;
 }
 
 @media (max-width: 600px) {

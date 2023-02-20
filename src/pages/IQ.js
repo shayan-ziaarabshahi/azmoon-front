@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import styles from "./IQ.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { IQTestArray } from "../data/IQ";
-import { Navigate, useNavigate } from "react-router-dom";
-import { ToastContainer, toast, Flip } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import axiosInstance from "../_axios";
-import { setUserAction } from "../redux/slices/websiteSlice";
-import PN, {convertEnToPe} from 'persian-number'
+import React, { useEffect, useRef, useState } from 'react'
+import styles from './IQ.module.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { setScoreAction } from './../redux/slices/websiteSlice'
+import { IQTestArray } from '../data/IQ'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { setIQTestPassedAction } from './../redux/slices/websiteSlice'
+
 
 export default function IQ() {
 
