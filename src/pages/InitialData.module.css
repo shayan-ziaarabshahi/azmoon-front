@@ -3,12 +3,16 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-image: linear-gradient(90deg, #8360c3, #2ebf91);
 }
 
 .innerContainer {
-  padding: 2rem;
+  padding: 1rem;
+  margin: 1rem;
   border-radius: 10px;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  background-color: white;
 }
 .description {
   display: block;
@@ -17,31 +21,7 @@
   color: rgb(22, 95, 163);
 }
 
-.timeContainer {
-  margin-bottom: 2rem;
-}
-
-.timeContainer span {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-.timeItemsContainer {
-  display: flex;
-}
-
-.timeItemContainer {
-}
-.timeItemContainer:nth-child(2) {
-  margin: 0 1rem;
-}
-.timeItemContainer label {
-  margin-left: 0.5rem;
-}
-.timeItemContainer input {
-  width: 50px;
-  outline: none;
-  padding: 0.25rem 0.5rem;
-  font-family: inherit;
+.fieldsContainer {
 }
 
 .fieldContainer {
@@ -56,6 +36,39 @@
   padding: 0.25rem 0.5rem;
   font-family: inherit;
   outline: none;
+  width: 100%;
+}
+
+.datePickerContainer {
+  position: relative;
+}
+
+.datePickerField {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  height: 2rem;
+  width: 100%;
+  background-color: white;
+  cursor: pointer;
+}
+
+.datePickerShowContainer {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+}
+
+.calenderIcon {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.5rem;
+}
+
+.datePickerWrapper {
+  position: absolute;
+  top: 2.5rem;
+  z-index: 1;
 }
 
 .buttonContainer {
@@ -65,19 +78,17 @@
   margin-top: 1rem;
 }
 .buttonContainer input {
-  color: black;
+  width: 100%;
+  background-color: black;
+  color: white;
   text-decoration: none;
-  padding: 1rem 2rem;
-  border: 5px solid skyblue;
+  padding: 0.5rem 1rem;
   transition: all 0.5s;
   cursor: pointer;
+  border: none;
   border-radius: 10px;
   font-family: inherit;
   outline: none;
-}
-.buttonContainer input:hover {
-  background-color: grey;
-  color: white;
 }
 
 .loader {
@@ -90,6 +101,10 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

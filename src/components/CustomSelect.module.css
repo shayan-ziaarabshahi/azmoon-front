@@ -1,0 +1,67 @@
+.customSelectContainer {
+    position: relative;
+    font-size: small;
+ }
+ 
+ 
+ .customSelectInput {
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    height: 2rem;
+    width: 100%;
+    background-color: white;
+    cursor: pointer;
+ }
+ 
+ 
+ .customSelectInputValue {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.5rem;
+ }
+ 
+ 
+ .arrowIcon {
+    position: absolute;
+    top: 0.4rem;
+    left: 0.5rem;
+ }
+ 
+ 
+ .customSelectListContainer {
+    position: absolute;
+    top: 2.5rem;
+    width: 100%;
+    border-radius: 3px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    max-height: 150px;
+    overflow: auto;
+ }
+ .customSelectListContainer::-webkit-scrollbar {
+   width: 6px;
+   background-color: rgba(0, 0, 0, 0.3);
+ }
+ .customSelectListContainer::-webkit-scrollbar-thumb {
+   background-color: black;
+   border-radius: 3px;
+ }
+ 
+ 
+ .customSelectList {
+    list-style: none;
+ }
+ 
+ 
+ .customSelectList li {
+    font-size: small;
+    padding: 0.5rem;
+    transition: 0.5s;
+    cursor: pointer;
+ }
+ .customSelectList li:hover {
+    color: skyblue;
+ }
+ 
